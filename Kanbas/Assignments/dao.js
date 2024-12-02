@@ -11,7 +11,13 @@ export function findAssignmentsForModule(moduleId) {
 }
 
 export function updateAssignment(assignmentId, assignmentUpdates) {
-  const assignment = Database.assignments.find((a) => a._id === assignmentId);
+  const {assignments} = Database;
+  console.log('Assignment ID:', assignmentId);
+  console.log('Assignment Updates:', assignmentUpdates);
+  const assignment = assignments.find((assignment) => assignment._id === assignmentId);
+  console.log('Found Assignment:', assignment);
+
+
   Object.assign(assignment, assignmentUpdates);
   return assignment;
 }
@@ -21,6 +27,7 @@ export function deleteAssignment(assignmentId) {
 
     Database.assignments = assignments.filter((assignment) => assignment._id !== assignmentId);
 }
+
 
 
 

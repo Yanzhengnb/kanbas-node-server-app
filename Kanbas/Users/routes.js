@@ -4,15 +4,17 @@ import * as enrollmentsDao from "../Enrollments/dao.js";
 function UserRoutes(app) {
   const createCourse = (req, res) => {
     const currentUser = req.session["currentUser"];
+    
     const newCourse = courseDao.createCourse(req.body);
     enrollmentsDao.enrollUserInCourse(currentUser._id, newCourse._id);
     res.json(newCourse);
   };
-  app.post("/api/users/current/courses", createCourse);
+
   const createUser = (req, res) => { };
   const deleteUser = (req, res) => { };
   const findAllUsers = (req, res) => { };
   const findUserById = (req, res) => { };
+  
   const updateUser = (req, res) => {
     const userId = req.params.userId;
     const userUpdates = req.body;
@@ -70,7 +72,8 @@ function UserRoutes(app) {
     }
     const courses = courseDao.findCoursesForEnrolledUser(userId);
     res.json(courses);
-  };
+  };  
+  app.post("/api/users/current/courses", createCourse);
   app.get("/api/users/:userId/courses", findCoursesForEnrolledUser);
   app.post("/api/users", createUser);
   app.get("/api/users", findAllUsers);
