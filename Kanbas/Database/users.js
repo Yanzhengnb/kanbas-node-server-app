@@ -76,7 +76,7 @@ export default [{
     "lastName": "Baggins",
     "email": "frodo@shire.com",
     "dob": "1368-09-22",
-    "role": "FACULTY",
+    "role": "ADMIN",
     "loginId": "001234567S",
     "section": "S101",
     "lastActivity": "2020-12-02",
